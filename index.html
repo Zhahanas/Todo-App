@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<meta name="theme-color" content="#667eea">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="https://placehold.co/192x192">
+<link rel="manifest" href="manifest.json">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App - Belajar Coding Bareng</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Link ke file CSS -->
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-2xl">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">
+                <i class="fas fa-tasks text-blue-500 mr-3"></i>
+                Todo App Santai
+            </h1>
+            <p class="text-gray-600">Bikin task, selesaikan, jadi produktif! 🔥</p>
+        </div>
+
+        <!-- Input Form -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <form id="taskForm" class="flex gap-3">
+                <input 
+                    type="text" 
+                    id="taskInput" 
+                    placeholder="Apa yang mau lu kerjain, bro?" 
+                    class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                >
+                <button 
+                    type="submit" 
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition duration-200"
+                >
+                    <i class="fas fa-plus mr-2"></i>Tambah
+                </button>
+            </form>
+        </div>
+
+        <!-- Task List -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+                <i class="fas fa-list-check text-green-500 mr-2"></i>
+                Daftar Task
+            </h2>
+            
+            <div id="taskList" class="space-y-3">
+                <!-- Tasks will be loaded here -->
+            </div>
+
+            <div id="emptyState" class="text-center py-8 text-gray-500">
+                <i class="fas fa-inbox text-4xl mb-3"></i>
+                <p>Wah, masih kosong nih! Tambah task dulu, bro!</p>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="mt-6 text-center text-gray-600">
+            <p id="stats">Total: 0 | Selesai: 0 | Progress: 0%</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script> <!-- Link ke file JavaScript -->
+</body>
+</html>
