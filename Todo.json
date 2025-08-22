@@ -1,0 +1,21 @@
+{
+  "name": "Todo App Santai",
+  "short_name": "TodoApp",
+  "description": "Aplikasi todo list sederhana untuk produktivitas",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#667eea",
+  "theme_color": "#667eea",
+  "icons": [
+    {
+      "src": "https://placehold.co/192x192",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://placehold.co/512x512",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
