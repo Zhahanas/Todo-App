@@ -139,3 +139,4 @@ class TodoUI {
 
 // Initialize app
 const todoUI = new TodoUI();
+

@@ -17,13 +17,20 @@
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
     <div class="container mx-auto px-4 py-8 max-w-2xl">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-gray-800 mb-2">
-                <i class="fas fa-tasks text-blue-500 mr-3"></i>
-                Todo App Santai
-            </h1>
-            <p class="text-gray-600">Bikin task, selesaikan, jadi produktif! 🔥</p>
+        <!-- Header (Dimodifikasi) -->
+        <div class="bg-blue-500 text-white p-4 rounded-lg mb-8 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold mb-1">
+                    <i class="fas fa-tasks mr-3"></i>
+                    Todo App Santai
+                </h1>
+                <p class="text-sm opacity-90">Bikin task, selesaikan, jadi produktif! 🔥</p>
+            </div>
+            <div id="accountSection" class="relative">
+                <button class="flex items-center justify-center w-10 h-10 bg-white/20 rounded-full hover:bg-white/30 transition duration-200">
+                    <i class="fas fa-user text-white text-lg"></i>
+                </button>
+            </div>
         </div>
 
         <!-- Input Form -->
@@ -67,6 +74,7 @@
             <p id="stats">Total: 0 | Selesai: 0 | Progress: 0%</p>
         </div>
     </div>
+    
 
     <script src="script.js"></script> <!-- Link ke file JavaScript -->
 </body>
