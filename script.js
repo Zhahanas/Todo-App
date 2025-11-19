@@ -26,6 +26,10 @@ class TodoDB {
             task.completed = !task.completed;
             this.saveTasks();
         }
+            this.db.toggleTask(id);
+        this.loadTasks();
+        this.loadArchive(); // update archive juga
+        this.updateStats();
     }
 
     deleteTask(id) {
@@ -38,6 +42,25 @@ class TodoDB {
         archive.classList.toggle("hidden");
         this.loadArchive();
     }
+    loadArchive() {
+        const archiveList = document.getElementById("archiveList");
+        const tasks = this.db.getTasks().filter(t => t.completed); // HANYA completed
+
+        if (tasks.length === 0) {
+        archiveList.innerHTML = `<p class="text-gray-500 text-center">Belum ada task yang diarsipkan.</p>`;
+        return;
+        }
+
+        archiveList.innerHTML = tasks.map(task => `
+            <div class="flex items-center justify-between bg-gray-50 p-4 rounded-lg border">
+                <span class="text-gray-600 line-through">${task.text}</span>
+                <button onclick="todoUI.deleteTask(${task.id})" class="text-red-500 hover:text-red-700">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        `).join('');
+    }
+
 
 
     getTasks() {
@@ -151,6 +174,7 @@ loadTasks() {
 
 // Initialize app
 const todoUI = new TodoUI();
+
 
 
 
