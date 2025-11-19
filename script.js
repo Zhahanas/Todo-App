@@ -32,6 +32,13 @@ class TodoDB {
         this.tasks = this.tasks.filter(t => t.id !== id);
         this.saveTasks();
     }
+    
+    toggleArchive() {
+        const archive = document.getElementById("archiveSection");
+        archive.classList.toggle("hidden");
+        this.loadArchive();
+    }
+
 
     getTasks() {
         return this.tasks;
@@ -144,5 +151,6 @@ loadTasks() {
 
 // Initialize app
 const todoUI = new TodoUI();
+
 
 
