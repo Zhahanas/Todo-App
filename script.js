@@ -78,43 +78,48 @@ class TodoUI {
         }
     }
 
-    loadTasks() {
-        const tasks = this.db.getTasks();
-        
-        if (tasks.length === 0) {
-            this.emptyState.style.display = 'block';
-            this.taskList.style.display = 'none';
-            return;
-        }
+loadTasks() {
+    let tasks = this.db.getTasks();
 
-        this.emptyState.style.display = 'none';
-        this.taskList.style.display = 'block';
+    // --- FITUR BARU: Urutkan otomatis ---
+    // Yang belum completed (false) naik ke atas
+    tasks.sort((a, b) => a.completed - b.completed);
+    // -------------------------------------
 
-        this.taskList.innerHTML = tasks.map(task => `
-            <div class="task-item flex items-center justify-between bg-gray-50 p-4 rounded-lg border">
-                <div class="flex items-center flex-1">
-                    <input 
-                        type="checkbox" 
-                        ${task.completed ? 'checked' : ''}
-                        onchange="todoUI.toggleTask(${task.id})"
-                        class="mr-3 h-5 w-5 text-blue-500"
-                    >
-                    <span class="${task.completed ? 'task-completed text-gray-500' : 'text-gray-800'} flex-1">
-                        ${task.text}
-                    </span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="text-xs text-gray-500">${task.createdAt}</span>
-                    <button 
-                        onclick="todoUI.deleteTask(${task.id})"
-                        class="text-red-500 hover:text-red-700 ml-2"
-                    >
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-            </div>
-        `).join('');
+    if (tasks.length === 0) {
+        this.emptyState.style.display = 'block';
+        this.taskList.style.display = 'none';
+        return;
     }
+
+    this.emptyState.style.display = 'none';
+    this.taskList.style.display = 'block';
+
+    this.taskList.innerHTML = tasks.map(task => `
+        <div class="task-item flex items-center justify-between bg-gray-50 p-4 rounded-lg border">
+            <div class="flex items-center flex-1">
+                <input 
+                    type="checkbox" 
+                    ${task.completed ? 'checked' : ''}
+                    onchange="todoUI.toggleTask(${task.id})"
+                    class="mr-3 h-5 w-5 text-blue-500"
+                >
+                <span class="${task.completed ? 'task-completed text-gray-500' : 'text-gray-800'} flex-1">
+                    ${task.text}
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-xs text-gray-500">${task.createdAt}</span>
+                <button 
+                    onclick="todoUI.deleteTask(${task.id})"
+                    class="text-red-500 hover:text-red-700 ml-2"
+                >
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
 
     toggleTask(id) {
         this.db.toggleTask(id);
@@ -139,4 +144,5 @@ class TodoUI {
 
 // Initialize app
 const todoUI = new TodoUI();
+
 
